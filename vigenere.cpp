@@ -15,3 +15,9 @@
 #include "caesar.h"
 #include "vigenere.h"
 #include <iostream>
+
+string vigenereCipher(string original, string keyword, bool encrypt) {
+    
+    //Stubbed
+    return "";
+}

@@ -17,30 +17,54 @@
 
 string toUpperCase(string original) {
     // TODO: implement
-    
+    for(int i = 0; i < original.length(); i++) {
+        original[i] = toupper(original[i]);
+    }
     // returning a string to avoid compile error
-    return "";
+    return original;
 }
 
 string removeNonAlphas(string original) {
     // TODO: implement
-    
+    string newString;
+        for(int i = 0; i < original.length();) {
+            if(isalpha(original.at(i))) {
+                newString.append(1, original.at(i));
+                i++;
+            }
+            else {
+                newString.append("");
+                i++;
+            }
+    }
     // returning a string to avoid compile error
-    return "";
+    return newString;
 }
+
 
 string removeDuplicate(string original) {
     // TODO: implement
-    
+    string extra = original;
+        for(int i = 0; i < original.length(); i++) {
+        char temp = original.at(i);
+        for(int x = i + 1; x < original.length() - i; ++x) {
+            if(temp == original.at(x)) {
+                extra.erase(x, 1);
+            }
+        }
+    }
+
     // returning a string to avoid compile error
-    return "";
+    return extra;
 }
+
 
 int charToInt(char original) {
     // TODO: implement
-    
+    int newVal = static_cast<int>(original);
+
     // returning 0 to avoid compile error
-    return 0;
+    return newVal;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

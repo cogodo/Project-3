@@ -19,3 +19,8 @@
 #include <string>
 
 using namespace std;
+
+void ciphers() {
+    
+    return;
+}

@@ -15,3 +15,26 @@
 #include "polybius.h"
 #include <string>
 using namespace std;
+
+string mixKey(string key) {
+     //Stub
+    return "";
+}
+
+void fillGrid(char grid[SIZE][SIZE], string content) {
+    
+    
+    return;
+}
+
+string findInGrid(char c, char grid[SIZE][SIZE]) {
+    
+    //Stub
+    return "";
+}
+
+string polybiusSquare(char grid[SIZE][SIZE], string key, string original, bool encrypt) {
+    
+  // Stub
+    return "";
+}

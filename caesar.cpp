@@ -13,3 +13,15 @@
 
 #include "caesar.h"
 #include <iostream>
+
+char shiftAlphaCharacter(char c, int n) {
+    
+    //Stubbed
+    return ' ';
+}
+
+string caesarCipher(string original, int key, bool encrypt) {
+    
+    //Stub
+    return "";
+}
