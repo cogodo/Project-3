@@ -45,15 +45,22 @@ string removeNonAlphas(string original) {
 string removeDuplicate(string original) {
     // TODO: implement
     string extra = original;
-        for(int i = 0; i < original.length(); i++) {
-        char temp = original.at(i);
-        for(int x = i + 1; x < original.length() - i; ++x) {
-            if(temp == original.at(x)) {
-                extra.erase(x, 1);
+        for(int i = 0; i < extra.length(); i++) {
+        char temp = extra.at(i);
+        for(int x = i + 1; x < extra.length(); ++x) {
+            if(temp == extra.at(x)) {
+                while(temp == extra.at(x)) {
+                    extra.erase(x, 1);
+                    if(x > extra.length() - 1) {
+                        break;
+                        
+                    }
+                    
+                }
+            }
             }
         }
-    }
-
+    
     // returning a string to avoid compile error
     return extra;
 }
@@ -61,7 +68,7 @@ string removeDuplicate(string original) {
 
 int charToInt(char original) {
     // TODO: implement
-    int newVal = static_cast<int>(original);
+    int newVal = static_cast<int>(original) - 48;
 
     // returning 0 to avoid compile error
     return newVal;

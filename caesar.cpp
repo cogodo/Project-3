@@ -15,13 +15,53 @@
 #include <iostream>
 
 char shiftAlphaCharacter(char c, int n) {
-    
-    //Stubbed
-    return ' ';
+    string lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+    string upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char newChar = ' ';
+    if(islower(c)) {
+        for(int i = 0; i < 26; i++) {
+            if(c == lowerAlphabet.at(i)) {
+                if(n < 0) {
+                    newChar = lowerAlphabet.at(26 - (abs(n + i) % 26));
+                    break;
+                }
+                newChar = lowerAlphabet.at((n + i) % 26);
+                break;
+            }
+        }
+    }
+    if(isupper(c)) {
+        for(int i = 0; i < 26; i++) {
+            if(c == upperAlphabet.at(i)) {
+                if(n < 0) {
+                    newChar = upperAlphabet.at(26 - (abs(n + i) % 26));
+                    break;
+                }
+                newChar = upperAlphabet.at((n + i) % 26);
+                break;
+            }
+        }
+    }
+   
+    return newChar;
 }
 
 string caesarCipher(string original, int key, bool encrypt) {
     
+    if(encrypt == true) {
+        for(int i = 0; i < original.length(); i++) {
+            if(isalpha(original.at(i))) {
+                original.at(i) = shiftAlphaCharacter(original.at(i), key);
+            }
+        }
+    }
+    if(encrypt == false) {
+        for(int j = 0; j < original.length(); j++) {
+            if(isalpha(original.at(j))) {
+                original.at(j) = shiftAlphaCharacter(original.at(j), (26 - (key % 26)));
+            }
+        }
+    }
     //Stub
-    return "";
+    return original;
 }
