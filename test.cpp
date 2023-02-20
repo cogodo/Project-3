@@ -28,6 +28,8 @@ void testRemoveDuplicate();
 void testCaesarCipher();
 void testVigenereCipher();
 void testMixKey();
+void testFindInGrid();
+void testPolybiusSquare();
 
 void startTests() {
     testShiftAlphaCharacter();
@@ -37,6 +39,8 @@ void startTests() {
     testCaesarCipher();
     testVigenereCipher();
     testMixKey();
+    testFindInGrid();
+    testPolybiusSquare();
     // Repeat for all other functions to be tested
 
     return;
@@ -108,4 +112,24 @@ void testMixKey() {
 
 void testFillGrid() {
     cout << "Now testing function FilGrid()" << endl;
+}
+
+
+void testFindInGrid() {
+    char grid[6][6];
+    fillGrid(grid, ALNUM);
+    cout << "Now testing function FindInGrid()" << endl;
+    printGrid(grid);
+    cout << "Expected: '00', Actual: '" << findInGrid('A', grid) << "'" << endl;
+    cout << "Expected: '24', Actual: '" << findInGrid('Q', grid) << "'" << endl;
+    cout << "Expected: '45', Actual: '" << findInGrid('3', grid) << "'" << endl;
+}
+
+void testPolybiusSquare() {
+    char grid[6][6];
+    fillGrid(grid, ALNUM);
+    printGrid(grid);
+    cout << "Now testing function PolybiusSquare()" << endl;
+    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "GOKU", "GOD BLESS AMERICA", true) << "'" << endl;
+    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "ABC", "000111 0521123131 04221230151004", false) << "'" << endl;
 }
