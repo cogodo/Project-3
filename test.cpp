@@ -2,8 +2,8 @@
  * test.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>Colin Gordon, Lee Fingar-Myers
- * <#Uniqnames#>cogo, leefm
+ * Colin Gordon, Lee Fingar-Myers
+ * cogo, leefm
  *
  * EECS 183: Project 3
  * Winter 2023
@@ -28,6 +28,7 @@ void testRemoveDuplicate();
 void testCaesarCipher();
 void testVigenereCipher();
 void testMixKey();
+void testFillGrid();
 void testFindInGrid();
 void testPolybiusSquare();
 
@@ -39,6 +40,7 @@ void startTests() {
     testCaesarCipher();
     testVigenereCipher();
     testMixKey();
+    testFillGrid();
     testFindInGrid();
     testPolybiusSquare();
     // Repeat for all other functions to be tested
@@ -104,14 +106,21 @@ void testVigenereCipher() {
 
 void testMixKey() {
     cout << "Now testing function MixKey()" << endl;
-    cout << "Expected: '', Actual: '" << mixKey("amazing") << "'" << endl;
-    cout << "Expected: '', Actual: '" << mixKey("23045sposnv") << "'" << endl;
-    cout << "Expected: '', Actual: '" << mixKey("aaaaapwj32rn") << "'" << endl;
+    cout << "Expected: '', Actual: '" << mixKey("TRAIN798") << "'" << endl;
+    cout << "Expected: '', Actual: '" << mixKey("GL914SVXM23") << "'" << endl;
+    cout << "Expected: '', Actual: '" << mixKey("123456789GLMTWQ") << "'" << endl;
+    cout << "Expected: '', Actual: '" << mixKey("RM43FE7QP") << "'" << endl;
 }
 
 
 void testFillGrid() {
-    cout << "Now testing function FilGrid()" << endl;
+    char grid[6][6];
+    string content;
+    cout << "Now testing function FillGrid()" << endl;
+    cout << "Expected: '', Actual: '";
+    fillGrid(grid, "smiles");
+    cout << "'" << endl;
+
 }
 
 
@@ -131,5 +140,8 @@ void testPolybiusSquare() {
     printGrid(grid);
     cout << "Now testing function PolybiusSquare()" << endl;
     cout << "Expected: '', Actual: '" << polybiusSquare(grid, "GOKU", "GOD BLESS AMERICA", true) << "'" << endl;
-    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "ABC", "000111 0521123131 04221230151004", false) << "'" << endl;
+    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "GOKU", "000111 0521123131 04221230151004", false) << "'" << endl;
+    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "LAWPLUS", "SHOUTING FEUD", true) << "'" << endl;
+    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "YEHAW", "HOWDY TO YOU", true) << "'" << endl;
+    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "STUER", "DID I", true) << "'" << endl;
 }

@@ -18,19 +18,17 @@ using namespace std;
 
 string mixKey(string key) {
     
-    string keyTemp = removeDuplicate(key);
-    keyTemp = toUpperCase(keyTemp);
     string revisedKey = "";
-    for (int i = 0; i < keyTemp.length(); i++) {
-        if(isalnum(keyTemp.at(i))) {
-            revisedKey.append(1, keyTemp.at(i));
+    for (int i = 0; i < key.length(); i++) {
+        if(isalnum(key.at(i))) {
+            revisedKey.append(1, key.at(i));
         }
     }
     string newList = ALNUM;
     newList.insert(0, revisedKey);
     newList = removeDuplicate(newList);
     
-     //Stub
+
     return newList;
 }
 
@@ -57,7 +55,7 @@ string findInGrid(char c, char grid[SIZE][SIZE]) {
             }
         }
     }
-    //Stub
+  
     return answer;
 }
 
@@ -77,31 +75,23 @@ string polybiusSquare(char grid[SIZE][SIZE], string key, string original, bool e
     else {
         message = original;
         string messageV2 = "";
-        int charCount = 0;
-        for(int f = 0; f < original.length(); f++) {
-            if(isnumber(message.at(f))) {
-                charCount++;
-            }
-            else {
-                charCount = charCount + 2;
-            }
-        }
-        charCount = charCount / 2;
+        
         for(int j = 0; j < message.length() - 1; j++) {
-                        if(isnumber(message.at(j))) {
-                int row = message.at(j) - 48;
+            if(isspace(message.at(j))) {
+                messageV2.append(" ");
+            }
+                int row = charToInt(message.at(j));
                             
                 j++;
-                int column = message.at(j) - 48;
+                int column = charToInt(message.at(j));
                             char letter = char(grid[row][column]);
                             string convert(1, letter);
                 messageV2.append(convert);
             }
-            
         }
         return messageV2;
     }
     
-  // Stub
+
     return message;
 }
