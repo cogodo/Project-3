@@ -63,35 +63,38 @@ string polybiusSquare(char grid[SIZE][SIZE], string key, string original, bool e
     
     string newKey = mixKey(key);
     string message = "";
+    string messageV2 = "";
     fillGrid(grid, newKey);
     if(encrypt) {
         message = original;
         for(int i = 0; i < message.length(); i++) {
-            if(isalpha(message.at(i))) {
-                message.replace(i, 1, findInGrid(message.at(i), grid));
+            if(isspace(message.at(i))) {
+                messageV2.append(" ");
+            }
+            if(isalnum(message.at(i))) {
+                messageV2.append(findInGrid(message.at(i), grid));
+
             }
         }
     }
     else {
         message = original;
-        string messageV2 = "";
-        
         for(int j = 0; j < message.length() - 1; j++) {
             if(isspace(message.at(j))) {
                 messageV2.append(" ");
             }
+            if(isalnum(message.at(j))) {
                 int row = charToInt(message.at(j));
-                            
+                
                 j++;
                 int column = charToInt(message.at(j));
-                            char letter = char(grid[row][column]);
-                            string convert(1, letter);
+                char letter = char(grid[row][column]);
+                string convert(1, letter);
                 messageV2.append(convert);
             }
         }
-        return messageV2;
     }
     
 
-    return message;
+    return messageV2;
 }

@@ -75,7 +75,6 @@ string findInGrid(char c, char grid[SIZE][SIZE]);
  *           the polybius square created using key. If encrypt is false, returns
  *           original string decrypted with polybius square created using key.
  */
-string polybiusSquare(char grid[SIZE][SIZE], string key, 
-                      string original, bool encrypt);
+string polybiusSquare(char grid[SIZE][SIZE], string key, string original, bool encrypt);
 
 #endif

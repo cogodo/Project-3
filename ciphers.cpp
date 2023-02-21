@@ -23,8 +23,8 @@ using namespace std;
 
 void ciphers() {
     
-
     
+    string empty = "";
     string cipher = "";
     bool direction = "";
     string message = "";
@@ -42,13 +42,14 @@ void ciphers() {
                 cout << endl << "Invalid cipher!";
                 return;
             }
-               
+            
         }
     }
-               
+    
     // ask user to encrypt or decrypt
     cout << endl << "Encrypt or decrypt: ";
     cin >> encrypt;
+    getline(cin, empty);
     encrypt = toUpperCase(encrypt);
     if(encrypt == "ENCRYPT" || encrypt == "E") {
         direction = true;
@@ -62,36 +63,68 @@ void ciphers() {
     }
     // get message from user
     cout << endl << "Enter a message: ";
-    cin >> message;
+    getline(cin, message);
+    if(cipher == "POLYBIUS" || cipher == "P") {
+        for(int i = 0; i < message.length(); i++) {
+            if(isalnum(message.at(i)) == false) {
+                cout << "Invalid message!";
+                return;
+            }
+        }
+    }
     // get key or keyword from user
     cout << endl << "What is your key: ";
+    getline(cin, keyword);
     if(cipher == "CAESAR" || cipher == "C") {
-        cin >> key;
+        for(int k = 0; k < keyword.length();) {
+            if(isdigit(keyword.at(k))) {
+                k++;
+            }
+            else {
+                cout << "Invalid key!";
+                return;
+            }
+        }
+        for(int l = 0; l < keyword.length(); l++) {
+            key = key + (charToInt(keyword.at(l)));
+        }
+        key = stoi(keyword);
     }
     else {
-        cin >> keyword;
+        if(cipher == "VIGENERE" || cipher == "V") {
+            int count = 0;
+            int j = 0;
+            for(j = 0; j < keyword.length(); j++) {
+                if(isalpha(keyword.at(j)) == false) {
+                    count++;
+                }
+            }
+            if(count == j) {
+                cout << "Invalid key!";
+                return;
+            }
+        }
+    }
+        // encrypt or decrypt message using selected cipher and key(word)
+        cout << endl;
+        if(cipher == "CAESAR" || cipher == "C") {
+            finalMessage = caesarCipher(message, key, direction);
+        }
+        if(cipher == "VIGENERE" || cipher == "V") {
+            finalMessage = vigenereCipher(message, keyword, direction);
+        }
+        if(cipher == "POLYBIUS" || cipher == "P") {
+            char grid[6][6];
+            fillGrid(grid, ALNUM);
+            finalMessage = polybiusSquare(grid, keyword, message, direction);
+        }
+        // print encrypted/decrypted message
         
+        if(direction == false) {
+            cout << "The decrypted message is: " << finalMessage;
+        }
+        else {
+            cout << "The encrypted message is: " << finalMessage;
+        }
+        return;
     }
-    // encrypt or decrypt message using selected cipher and key(word)
-    cout << endl;
-    if(cipher == "CAESAR" || cipher == "C") {
-        finalMessage = caesarCipher(message, key, direction);
-    }
-    if(cipher == "VIGENERE" || cipher == "V") {
-        finalMessage = vigenereCipher(message, keyword, direction);
-    }
-    if(cipher == "POLYBIUS" || cipher == "P") {
-        char grid[6][6];
-        fillGrid(grid, ALNUM);
-        finalMessage = polybiusSquare(grid, keyword, message, direction);
-    }
-    // print encrypted/decrypted message
-  
-    if(direction == false) {
-        cout << "The decrypted message is: " << finalMessage << endl;
-    }
-    else {
-        cout << "The encrypted message is: " << finalMessage << endl;
-    }
-    return;
-}

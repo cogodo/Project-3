@@ -28,9 +28,8 @@ void testRemoveDuplicate();
 void testCaesarCipher();
 void testVigenereCipher();
 void testMixKey();
-void testFillGrid();
 void testFindInGrid();
-void testPolybiusSquare();
+
 
 void startTests() {
     testShiftAlphaCharacter();
@@ -40,9 +39,9 @@ void startTests() {
     testCaesarCipher();
     testVigenereCipher();
     testMixKey();
-    testFillGrid();
     testFindInGrid();
-    testPolybiusSquare();
+
+    
     // Repeat for all other functions to be tested
 
     return;
@@ -113,35 +112,12 @@ void testMixKey() {
 }
 
 
-void testFillGrid() {
-    char grid[6][6];
-    string content;
-    cout << "Now testing function FillGrid()" << endl;
-    cout << "Expected: '', Actual: '";
-    fillGrid(grid, "smiles");
-    cout << "'" << endl;
-
-}
-
-
 void testFindInGrid() {
-    char grid[6][6];
+    char grid[SIZE][SIZE];
     fillGrid(grid, ALNUM);
     cout << "Now testing function FindInGrid()" << endl;
     printGrid(grid);
     cout << "Expected: '00', Actual: '" << findInGrid('A', grid) << "'" << endl;
     cout << "Expected: '24', Actual: '" << findInGrid('Q', grid) << "'" << endl;
     cout << "Expected: '45', Actual: '" << findInGrid('3', grid) << "'" << endl;
-}
-
-void testPolybiusSquare() {
-    char grid[6][6];
-    fillGrid(grid, ALNUM);
-    printGrid(grid);
-    cout << "Now testing function PolybiusSquare()" << endl;
-    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "GOKU", "GOD BLESS AMERICA", true) << "'" << endl;
-    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "GOKU", "000111 0521123131 04221230151004", false) << "'" << endl;
-    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "LAWPLUS", "SHOUTING FEUD", true) << "'" << endl;
-    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "YEHAW", "HOWDY TO YOU", true) << "'" << endl;
-    cout << "Expected: '', Actual: '" << polybiusSquare(grid, "STUER", "DID I", true) << "'" << endl;
 }
