@@ -66,7 +66,11 @@ void ciphers() {
     getline(cin, message);
     if(cipher == "POLYBIUS" || cipher == "P") {
         for(int i = 0; i < message.length(); i++) {
-            if(isalnum(message.at(i)) == false) {
+            if(isalnum(message.at(i)) == false && isspace(message.at(i)) == false) {
+                cout << "Invalid message!";
+                return;
+            }
+            if(toupper(message.at(i)) != message.at(i)) {
                 cout << "Invalid message!";
                 return;
             }
@@ -104,7 +108,20 @@ void ciphers() {
                 return;
             }
         }
+        if(cipher == "POLYBIUS" || cipher == "P") {
+            for(int i = 0; i < keyword.length(); i++) {
+                if(isalnum(keyword.at(i)) == false) {
+                    cout << "Invalid key!";
+                    return;
+                }
+                if(toupper(keyword.at(i)) != keyword.at(i)) {
+                    cout << "Invalid key!";
+                    return;
+                }
+            }
+        }
     }
+    
         // encrypt or decrypt message using selected cipher and key(word)
         cout << endl;
         if(cipher == "CAESAR" || cipher == "C") {
