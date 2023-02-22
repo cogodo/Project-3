@@ -2,13 +2,13 @@
  * ciphers.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>Colin Gordon, Lee Fingar-Myers
- * <#Uniqnames#>cogo, leefm
+ * Colin Gordon, Lee Fingar-Myers
+ * cogo, leefm
  *
  * EECS 183: Project 3
  * Winter 2023
  *
- * <#description#>
+ * The main program that displays choice selections. Specifically which cipher, whether to encrypt or decrypt, message, key, and encrypted message.
  */
 
 #include "utility.h"
@@ -66,7 +66,7 @@ void ciphers() {
     getline(cin, message);
     if(cipher == "POLYBIUS" || cipher == "P") {
         for(int i = 0; i < message.length(); i++) {
-            if(isalnum(message.at(i)) == false && isspace(message.at(i)) == false) {
+            if(!isalnum(message.at(i)) && !isspace(message.at(i))) {
                 cout << "Invalid message!";
                 return;
             }
@@ -99,7 +99,7 @@ void ciphers() {
             int count = 0;
             int j = 0;
             for(j = 0; j < keyword.length(); j++) {
-                if(isalpha(keyword.at(j)) == false) {
+                if(!isalpha(keyword.at(j))) {
                     count++;
                 }
             }
@@ -110,11 +110,16 @@ void ciphers() {
         }
         if(cipher == "POLYBIUS" || cipher == "P") {
             for(int i = 0; i < keyword.length(); i++) {
-                if(isalnum(keyword.at(i)) == false) {
+                if(!isalnum(keyword.at(i))) {
                     cout << "Invalid key!";
                     return;
                 }
                 if(toupper(keyword.at(i)) != keyword.at(i)) {
+                    cout << "Invalid key!";
+                    return;
+                }
+                string testKey = removeDuplicate(keyword);
+                if(keyword != testKey) {
                     cout << "Invalid key!";
                     return;
                 }
@@ -137,7 +142,7 @@ void ciphers() {
         }
         // print encrypted/decrypted message
         
-        if(direction == false) {
+        if(!direction) {
             cout << "The decrypted message is: " << finalMessage;
         }
         else {
