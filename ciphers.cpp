@@ -64,13 +64,10 @@ void ciphers() {
     // get message from user
     cout << endl << "Enter a message: ";
     getline(cin, message);
-    if(cipher == "POLYBIUS" || cipher == "P") {
+        if(cipher == "POLYBIUS" || cipher == "P") {
+            message = toUpperCase(message);
         for(int i = 0; i < message.length(); i++) {
             if(!isalnum(message.at(i)) && !isspace(message.at(i))) {
-                cout << "Invalid message!";
-                return;
-            }
-            if(toupper(message.at(i)) != message.at(i)) {
                 cout << "Invalid message!";
                 return;
             }
@@ -109,23 +106,18 @@ void ciphers() {
             }
         }
         if(cipher == "POLYBIUS" || cipher == "P") {
+            keyword = toUpperCase(keyword);
+            keyword = removeDuplicate(keyword);
             for(int i = 0; i < keyword.length(); i++) {
                 if(!isalnum(keyword.at(i))) {
                     cout << "Invalid key!";
                     return;
                 }
-                if(toupper(keyword.at(i)) != keyword.at(i)) {
-                    cout << "Invalid key!";
-                    return;
-                }
-                string testKey = removeDuplicate(keyword);
-                if(keyword != testKey) {
-                    cout << "Invalid key!";
-                    return;
-                }
             }
         }
-    }
+            
+        }
+    
     
         // encrypt or decrypt message using selected cipher and key(word)
         cout << endl;
